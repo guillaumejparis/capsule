@@ -19,3 +19,7 @@ body {
 #app {
   height: 100%;
 }
+
+.link {
+  color: #607d8b;
+}
