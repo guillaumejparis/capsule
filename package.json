@@ -1,0 +1,36 @@
+{
+  "name": "capsule",
+  "version": "1.0.0",
+  "license": "MIT",
+  "author": "Guillaume Paris <guillaumejparis@gmail.com>",
+  "scripts": {
+    "dev": "preact watch",
+    "build": "preact build --dest _build",
+    "lint": "eslint .",
+    "deploy": "./deploy.sh",
+    "test": "echo Error: no test specified && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/guillaumejparis/capsule.git"
+  },
+  "homepage": "https://guillaumejparis.github.io/capsule",
+  "eslintConfig": {
+    "extends": "eslint:recommended",
+    "parserOptions": {
+      "ecmaVersion": 6,
+      "sourceType": "module",
+      "ecmaFeatures": {
+        "jsx": true
+      }
+    }
+  },
+  "dependencies": {
+    "preact": "^10.0.0",
+    "wouter-preact": "^2.2.1"
+  },
+  "devDependencies": {
+    "eslint": "^6.5.1",
+    "preact-cli": "^2.2.1"
+  }
+}
