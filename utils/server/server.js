@@ -9,5 +9,5 @@ const app = express();
 app.use("/capsule", express.static("_build"));
 
 app.listen(PORT, HOST, () => {
-  console.log(`Running on http://${HOST}:${PORT}/capsule`);
+  console.info(`Running on http://${HOST}:${PORT}/capsule`);
 });
