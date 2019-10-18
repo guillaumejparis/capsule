@@ -1,8 +1,9 @@
+import { h } from "preact";
 import { Link } from "wouter-preact";
-import style from "./style";
+import "./style";
 
 const Home = () => (
-  <div className={style.home}>
+  <div className="home">
     <h1>Capsule</h1>
     <Link href="/gallery">
       <a className="link">Gallery</a>
