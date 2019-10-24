@@ -11,6 +11,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v1
+      - name: lint
+        run: yarn lint
       - name: deploy-github-pages
         uses: guillaumejparis/gh-actions-deploy-gh-pages@master
         env:
