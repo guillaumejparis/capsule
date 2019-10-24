@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState, useCallback } from "preact/hooks";
-import useLocation from "wouter-preact/use-location";
 
 const _useLocation = () => {
   const [path, update] = useState(`${location.pathname}${location.hash}`);
@@ -33,7 +32,6 @@ const _useLocation = () => {
   // the function reference should stay the same between re-renders, so that
   // it can be passed down as an element prop without any performance concerns.
   const navigate = useCallback((to, replace) => {
-    console.log(to, replace);
     history[replace ? "replaceState" : "pushState"](0, 0, to);
   }, []);
 
@@ -69,15 +67,11 @@ const patchHistoryEvents = () => {
 
 // hash & basepath location
 const makeUseCapsuleLocation = basepath => () => {
-  console.log("basepath", basepath);
   const [location, setLocation] = _useLocation();
 
-  console.log("location", location);
   const normalized = location.startsWith(basepath)
     ? location.slice(basepath.length)
     : location;
-
-  console.log("normalized", normalized);
 
   return [normalized, to => setLocation(`${basepath}${to}`)];
 };

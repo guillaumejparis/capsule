@@ -1,5 +1,5 @@
 import { h } from "preact";
-import { Route, Router, Redirect } from "wouter-preact";
+import { Route, Router } from "wouter-preact";
 
 import { makeUseCapsuleLocation } from "routes/router";
 import Home from "routes/home";
