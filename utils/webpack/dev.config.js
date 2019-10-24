@@ -18,7 +18,7 @@ module.exports = require("./config")({
   devtool: "inline-source-map",
   devServer: {
     publicPath: "/capsule/",
-    public: "localhost:8080/capsule/",
+    public: "localhost:8080/capsule/#",
     compress: true,
     hot: true
   }

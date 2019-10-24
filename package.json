@@ -17,7 +17,6 @@
   "homepage": "https://guillaumejparis.github.io/capsule",
   "dependencies": {
     "preact": "^10.0.0",
-    "webpack-dev-server": "^3.8.2",
     "wouter-preact": "^2.2.1"
   },
   "devDependencies": {
@@ -35,6 +34,7 @@
     "style-loader": "^1.0.0",
     "webpack": "^4.41.2",
     "webpack-cli": "^3.3.9",
+    "webpack-dev-server": "^3.9.0",
     "workbox-webpack-plugin": "^4.3.1"
   }
 }

@@ -12,7 +12,7 @@ init();
 
 if (module.hot) module.hot.accept("./components/app", init);
 
-if ("serviceWorker" in navigator) {
+if (env === "production" && "serviceWorker" in navigator) {
   window.addEventListener("load", () => {
     navigator.serviceWorker
       .register("/capsule/service-worker.js")

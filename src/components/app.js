@@ -1,16 +1,16 @@
 import { h } from "preact";
-import { Route, Router } from "wouter-preact";
+import { Route, Router, Redirect } from "wouter-preact";
 
-import { makeUseBasepathLocation } from "routes/router";
+import { makeUseCapsuleLocation } from "routes/router";
 import Home from "routes/home";
 import Gallery from "routes/gallery";
 
-const useBasepathLocation = makeUseBasepathLocation("/capsule");
+const useCapsuleLocation = makeUseCapsuleLocation("/capsule/#");
 
 const App = () => {
   return (
     <div id="app">
-      <Router hook={useBasepathLocation}>
+      <Router hook={useCapsuleLocation}>
         <Route path="/" component={Home} />
         <Route path="/gallery" component={Gallery} />
       </Router>
