@@ -4,7 +4,7 @@ import "./style";
 
 const Home = () => (
   <div className="home">
-    <h1>Capsule 2.0</h1>
+    <h1>Capsule</h1>
     <Link href="/gallery">
       <a className="link">Gallery</a>
     </Link>
