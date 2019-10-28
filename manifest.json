@@ -1,0 +1,21 @@
+{
+  "name": "Capsule",
+  "short_name": "Capsule",
+  "start_url": "/capsule/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#fff",
+  "theme_color": "#607d8b",
+  "icons": [
+    {
+      "src": "/capsule/assets/icons/android-chrome-192x192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/capsule/assets/icons/android-chrome-512x512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ]
+}
