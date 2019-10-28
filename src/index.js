@@ -1,4 +1,6 @@
 import { h, render } from "preact";
+import Toastify from "toastify-js";
+import "toastify-js/src/toastify.css";
 import App from "components/app.js";
 import "./index.css";
 
@@ -18,9 +20,29 @@ if (process.env.NODE_ENV === "production" && "serviceWorker" in navigator) {
       .register("/capsule/service-worker.js")
       .then(registration => {
         console.info("SW registered: ", registration);
+        registration.addEventListener("updatefound", () => {
+          registration.installing.addEventListener("statechange", () => {
+            if (event.target.state === "installed") {
+              if (registration.active) {
+                Toastify({
+                  text: "Update available. Reload now.",
+                  duration: 30000,
+                  gravity: "top",
+                  position: "right",
+                  className: {
+                    color: "white"
+                  },
+                  backgroundColor:
+                    "linear-gradient(to right, #34515e, #607d8b)",
+                  onClick: () => location.reload()
+                }).showToast();
+              }
+            }
+          });
+        });
       })
       .catch(registrationError => {
-        console.info("SW registration failed: ", registrationError);
+        console.error("SW registration failed: ", registrationError);
       });
   });
 }

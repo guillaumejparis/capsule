@@ -8,7 +8,7 @@
     "build": "webpack --config utils/webpack/prod.config.js",
     "serve-build": "node utils/server/server.js",
     "lint": "eslint .",
-    "test": "echo Error: no test specified && exit 1"
+    "test": "echo No test specified && exit 0"
   },
   "repository": {
     "type": "git",
@@ -17,6 +17,7 @@
   "homepage": "https://guillaumejparis.github.io/capsule",
   "dependencies": {
     "preact": "^10.0.0",
+    "toastify-js": "https://github.com/guillaumejparis/toastify-js",
     "wouter-preact": "^2.2.1"
   },
   "devDependencies": {

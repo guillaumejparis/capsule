@@ -5,7 +5,7 @@ import { makeUseCapsuleLocation } from "routes/router";
 import Home from "routes/home";
 import Gallery from "routes/gallery";
 
-const useCapsuleLocation = makeUseCapsuleLocation("/capsule/#");
+const useCapsuleLocation = makeUseCapsuleLocation("/capsule", true);
 
 const App = () => {
   return (

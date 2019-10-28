@@ -12,7 +12,7 @@
     }
   },
   "rules": {
-    "no-console": ["error", { "allow": ["info"] }]
+    "no-console": ["error", { "allow": ["info", "error"] }]
   },
   "settings": {
     "react": {

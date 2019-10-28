@@ -11,11 +11,15 @@ jobs:
 
     steps:
       - uses: actions/checkout@v1
-      - name: lint
+      - name: Lint
         run: |
           yarn
           yarn lint
-      - name: deploy-github-pages
+      - name: Tests
+        run: |
+          yarn
+          yarn run test
+      - name: Deploy to Github pages
         uses: guillaumejparis/gh-actions-deploy-gh-pages@master
         env:
           GIT_DEPLOY_KEY: ${{ secrets.GIT_BLOUP_KEY }}

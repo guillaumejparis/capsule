@@ -1,7 +1,10 @@
 import { useEffect, useRef, useState, useCallback } from "preact/hooks";
 
-const _useLocation = () => {
-  const [path, update] = useState(`${location.pathname}${location.hash}`);
+// https://github.com/molefrog/wouter/blob/master/use-location.js
+const _useLocation = hash => {
+  const [path, update] = useState(
+    `${location.pathname}${hash ? location.hash : ""}`
+  );
   const prevPath = useRef(path);
 
   useEffect(() => {
@@ -11,9 +14,17 @@ const _useLocation = () => {
     // last render and updates the state only when needed.
     // unfortunately, we can't rely on `path` value here, since it can be stale,
     // that's why we store the last pathname in a ref.
-    const checkForUpdates = () =>
-      prevPath.current !== `${location.pathname}${location.hash}` &&
-      update((prevPath.current = `${location.pathname}${location.hash}`));
+    const checkForUpdates = () => {
+      return (
+        prevPath.current !==
+          `${location.pathname}${hash ? location.hash : ""}` &&
+        update(
+          (prevPath.current = `${location.pathname}${
+            hash ? location.hash : ""
+          }`)
+        )
+      );
+    };
 
     const events = ["popstate", "pushState", "replaceState"];
     events.map(e => addEventListener(e, checkForUpdates));
@@ -21,6 +32,7 @@ const _useLocation = () => {
     // it's possible that an update has occurred between render and the effect handler,
     // so we run additional check on mount to catch these updates. Based on:
     // https://gist.github.com/bvaughn/e25397f70e8c65b0ae0d7c90b731b189
+
     checkForUpdates();
 
     return () => events.map(e => removeEventListener(e, checkForUpdates));
@@ -66,14 +78,20 @@ const patchHistoryEvents = () => {
 };
 
 // hash & basepath location
-const makeUseCapsuleLocation = basepath => () => {
-  const [location, setLocation] = _useLocation();
+const makeUseCapsuleLocation = (basepath, hash = false) => () => {
+  const [location, setLocation] = _useLocation(hash);
 
-  const normalized = location.startsWith(basepath)
-    ? location.slice(basepath.length)
-    : location;
+  let normalized = location;
+  if (hash && location.startsWith(`${basepath}/#`)) {
+    normalized = location.slice(`${basepath}/#`.length);
+  } else if (location.startsWith(basepath)) {
+    normalized = location.slice(basepath.length);
+  }
 
-  return [normalized, to => setLocation(`${basepath}${to}`)];
+  return [
+    normalized,
+    to => setLocation(hash ? `${basepath}/#${to}` : `${basepath}${to}`)
+  ];
 };
 
 export { makeUseCapsuleLocation };
