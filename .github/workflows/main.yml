@@ -1,4 +1,4 @@
-name: Deploy to Github Pages
+name: Capsule CI
 
 on:
   push:
@@ -11,14 +11,11 @@ jobs:
 
     steps:
       - uses: actions/checkout@v1
-      - name: Lint
+      - name: Lint & Tests
         run: |
           yarn
           yarn lint
-      - name: Tests
-        run: |
-          yarn
-          yarn run test
+          yarn test
       - name: Deploy to Github pages
         uses: guillaumejparis/gh-actions-deploy-gh-pages@master
         env:
